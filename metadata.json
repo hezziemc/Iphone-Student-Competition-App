@@ -1,0 +1,6 @@
+{
+  "name": "PolyU Design - Student Subsidy Portal",
+  "description": "Interactive multi-screen prototype for Hong Kong Polytechnic University School of Design Student Subsidy Scheme and Reimbursement Vault.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
