@@ -98,8 +98,8 @@
           <div class="mt-5 pt-4 border-t border-slate-100">
             <div class="flex items-baseline justify-between mb-2">
               <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Remaining Quota</span>
-              <div class="text-right">
-                <span class="text-lg font-black text-[#7E1925]">$12,500</span>
+              <div class="text-right flex items-baseline gap-1">
+                <span class="text-[28px] font-black text-[#7E1925] tracking-tight leading-none">$12,500</span>
                 <span class="text-xs font-semibold text-slate-400">/ 15,000</span>
               </div>
             </div>
@@ -284,16 +284,40 @@
           </div>
         </div>
 
-        <!-- Honorarium Program Card -->
-        <div class="bg-gradient-to-br from-stone-900 to-stone-800 text-white rounded-2xl p-4 space-y-2.5 shadow-md">
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/30">Honorarium Program</span>
+        <!-- Honorarium Program Widget -->
+        <div class="bg-[#25201D] text-white rounded-[28px] p-6 space-y-4 shadow-xl border border-white/5">
+          <div class="flex items-center justify-between">
+            <div class="w-11 h-11 rounded-2xl bg-[#382E27] flex items-center justify-center text-[#D89047] shadow-inner shrink-0">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 4h-2V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v1H5a2 2 0 0 0-2 2v2a5 5 0 0 0 4.18 4.93A6 6 0 0 0 11 15.82V18H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2v-2.18a6 6 0 0 0 3.82-1.89A5 5 0 0 0 21 8V6a2 2 0 0 0-2-2ZM5 8V6h2v4.78A3 3 0 0 1 5 8Zm14 0a3 3 0 0 1-2 2.78V6h2v2Zm-7 4a4 4 0 0 1-4-4V4h8v4a4 4 0 0 1-4 4Z" />
+                <path d="M12 6.5l.7 1.4 1.6.2-1.1 1.1.3 1.6-1.5-.8-1.5.8.3-1.6-1.1-1.1 1.6-.2z" />
+              </svg>
+            </div>
+            <div class="px-4 py-1.5 rounded-full border border-[#644833] bg-[#2C231D]/80">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-[#D89047] block leading-none">
+                HONORARIUM PROGRAM
+              </span>
+            </div>
           </div>
-          <h3 class="text-sm font-bold tracking-tight">Won a Design Award Recently?</h3>
-          <p class="text-[11px] text-stone-300 leading-relaxed">Upload your official award certificate or jury results within 30 days of announcement to claim supplementary School of Design honorarium grants.</p>
-          <button type="button" onclick="showToast('Honorarium upload portal will open once official competition results are published.')" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-extrabold text-xs py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-            UPLOAD AWARD CERTIFICATE
+
+          <div class="space-y-2">
+            <h3 class="text-base sm:text-[17px] font-black tracking-tight text-white uppercase leading-snug">
+              WON A DESIGN AWARD RECENTLY?
+            </h3>
+            <p class="text-xs sm:text-[13px] text-[#D1C7BF] leading-relaxed font-normal">
+              Upload your official award certificate or jury results within 30 days of announcement to claim supplementary School of Design honorarium grants.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onclick="showToast('Honorarium upload portal will open once official competition results are published.')"
+            class="w-full bg-[#BA7837] hover:bg-[#A96A2C] text-white font-extrabold text-xs tracking-wider uppercase py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-[#BA7837]/20 transition active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#BA7837] focus:ring-offset-2 focus:ring-offset-[#25201D]"
+          >
+            <svg class="w-4 h-4 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 4v12m0-12l-4 4m4-4l4 4" />
+            </svg>
+            <span>UPLOAD AWARD CERTIFICATE</span>
           </button>
         </div>
 
