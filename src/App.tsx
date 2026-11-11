@@ -691,9 +691,9 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setSalutation('Mr')}
-                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-semibold transition ${
+                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-normal font-sans transition ${
                           salutation === 'Mr'
-                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/5 text-[#7E1925] font-bold'
+                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/5 text-[#7E1925]'
                             : 'border-slate-200 hover:bg-slate-50 text-slate-700'
                         }`}
                       >
@@ -702,9 +702,9 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setSalutation('Ms')}
-                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-semibold transition ${
+                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-normal font-sans transition ${
                           salutation === 'Ms'
-                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/5 text-[#7E1925] font-bold'
+                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/5 text-[#7E1925]'
                             : 'border-slate-200 hover:bg-slate-50 text-slate-700'
                         }`}
                       >
@@ -727,7 +727,7 @@ export default function App() {
                         id="form-fullname"
                         value="Rachel Tsang"
                         readOnly
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 pl-9 cursor-not-allowed"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800 pl-9 cursor-not-allowed"
                       />
                       <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     </div>
@@ -744,7 +744,7 @@ export default function App() {
                         id="form-student-id"
                         value="22084912D"
                         readOnly
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 pl-9 font-mono"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800 pl-9"
                       />
                       <Building2 className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     </div>
@@ -761,7 +761,7 @@ export default function App() {
                         id="form-tel"
                         value={tel}
                         onChange={(e) => setTel(e.target.value)}
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800 focus:ring-2 focus:ring-[#7E1925] focus:border-[#7E1925]"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925] focus:border-[#7E1925]"
                       />
                     </div>
                     <div className="space-y-1">
@@ -773,7 +773,7 @@ export default function App() {
                         id="form-email"
                         value="rachel.tsang@connect.polyu.hk"
                         readOnly
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800"
                       />
                     </div>
                   </div>
@@ -787,10 +787,10 @@ export default function App() {
                           key={yr}
                           type="button"
                           onClick={() => setStudyYear(yr)}
-                          className={`py-2 rounded-xl border text-xs transition ${
+                          className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
                             studyYear === yr
-                              ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 font-bold text-[#7E1925]'
-                              : 'border-slate-200 font-semibold text-slate-600 hover:bg-slate-50'
+                              ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
+                              : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                           }`}
                         >
                           {yr}
@@ -812,10 +812,10 @@ export default function App() {
                           key={item}
                           type="button"
                           onClick={() => setSpecialism(item)}
-                          className={`w-full text-left flex items-center gap-2.5 p-2 rounded-xl text-xs transition ${
+                          className={`w-full text-left flex items-center gap-2.5 p-2 rounded-xl text-xs font-normal font-sans transition ${
                             specialism === item
-                              ? 'bg-[#7E1925]/5 border-2 border-[#7E1925] font-bold text-[#7E1925]'
-                              : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-300 font-medium'
+                              ? 'bg-[#7E1925]/5 border-2 border-[#7E1925] text-[#7E1925]'
+                              : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-300'
                           }`}
                         >
                           <span
@@ -842,7 +842,7 @@ export default function App() {
                       value={gradProgramme}
                       onChange={(e) => setGradProgramme(e.target.value)}
                       placeholder="Leave blank if currently enrolled"
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 placeholder-slate-400 focus:ring-2 focus:ring-[#7E1925]"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-normal font-sans text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-[#7E1925]"
                     />
                   </div>
                 </fieldset>
@@ -868,7 +868,7 @@ export default function App() {
                       value={compTitle}
                       onChange={(e) => setCompTitle(e.target.value)}
                       required
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
                     />
                   </div>
 
@@ -883,7 +883,7 @@ export default function App() {
                         value={compUrl}
                         onChange={(e) => setCompUrl(e.target.value)}
                         required
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-blue-600 font-medium pl-9 focus:ring-2 focus:ring-[#7E1925]"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800 pl-9 focus:ring-2 focus:ring-[#7E1925]"
                       />
                       <ExternalLink className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                     </div>
@@ -901,7 +901,7 @@ export default function App() {
                       id="form-category"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800"
                     />
                   </div>
 
@@ -913,10 +913,10 @@ export default function App() {
                           key={lvl}
                           type="button"
                           onClick={() => setRecognitionLevel(lvl)}
-                          className={`py-2 rounded-xl border text-xs transition ${
+                          className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
                             recognitionLevel === lvl
-                              ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 font-bold text-[#7E1925]'
-                              : 'border-slate-200 font-semibold text-slate-600 hover:bg-slate-50'
+                              ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
+                              : 'border-slate-200 text-slate-600 hover:bg-slate-50'
                           }`}
                         >
                           {lvl}
@@ -937,7 +937,7 @@ export default function App() {
                       id="form-announcement-date"
                       value={announcementDate}
                       onChange={(e) => setAnnouncementDate(e.target.value)}
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
                     />
                   </div>
                 </fieldset>
@@ -966,7 +966,7 @@ export default function App() {
                       value={projectTitle}
                       onChange={(e) => setProjectTitle(e.target.value)}
                       required
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-800"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800"
                     />
                   </div>
 
@@ -977,10 +977,10 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setIsGroup(false)}
-                        className={`py-2 rounded-xl border text-xs transition ${
+                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
                           !isGroup
-                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 font-bold text-[#7E1925]'
-                            : 'border-slate-200 font-semibold text-slate-600'
+                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
+                            : 'border-slate-200 text-slate-600'
                         }`}
                       >
                         No
@@ -988,10 +988,10 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setIsGroup(true)}
-                        className={`py-2 rounded-xl border text-xs transition ${
+                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
                           isGroup
-                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 font-bold text-[#7E1925]'
-                            : 'border-slate-200 font-semibold text-slate-600'
+                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
+                            : 'border-slate-200 text-slate-600'
                         }`}
                       >
                         Yes
@@ -1008,7 +1008,7 @@ export default function App() {
                           rows={2}
                           value={groupMembers}
                           onChange={(e) => setGroupMembers(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 font-mono"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs font-normal font-sans text-slate-800"
                         />
                       </div>
                     )}
@@ -1021,10 +1021,10 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setIsCoursework(false)}
-                        className={`py-2 rounded-xl border text-xs transition ${
+                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
                           !isCoursework
-                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 font-bold text-[#7E1925]'
-                            : 'border-slate-200 font-semibold text-slate-600'
+                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
+                            : 'border-slate-200 text-slate-600'
                         }`}
                       >
                         No
@@ -1032,10 +1032,10 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setIsCoursework(true)}
-                        className={`py-2 rounded-xl border text-xs transition ${
+                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
                           isCoursework
-                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 font-bold text-[#7E1925]'
-                            : 'border-slate-200 font-semibold text-slate-600'
+                            ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
+                            : 'border-slate-200 text-slate-600'
                         }`}
                       >
                         Yes
@@ -1053,7 +1053,7 @@ export default function App() {
                             id="form-subject"
                             value={courseSubject}
                             onChange={(e) => setCourseSubject(e.target.value)}
-                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800"
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-normal font-sans text-slate-800"
                           />
                         </div>
                         <div className="space-y-1">
@@ -1065,7 +1065,7 @@ export default function App() {
                             id="form-tutor"
                             value={courseTutor}
                             onChange={(e) => setCourseTutor(e.target.value)}
-                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800"
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-normal font-sans text-slate-800"
                           />
                         </div>
                       </div>
@@ -1077,7 +1077,7 @@ export default function App() {
                     <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">Applying For *</label>
 
                     <div className="p-3 bg-[#7E1925]/5 border-2 border-[#7E1925] rounded-2xl space-y-2">
-                      <div className="flex items-center gap-2 text-xs font-bold text-[#7E1925]">
+                      <div className="flex items-center gap-2 text-xs font-normal font-sans text-[#7E1925]">
                         <CheckCircle2 className="w-4 h-4 text-[#7E1925]" />
                         <span>Entrance fee's subsidy</span>
                       </div>
@@ -1087,7 +1087,7 @@ export default function App() {
                           <select
                             value={claimCurrency}
                             onChange={(e) => setClaimCurrency(e.target.value)}
-                            className="w-full bg-white border border-slate-200 rounded-lg text-xs font-bold p-1 text-slate-700"
+                            className="w-full bg-white border border-slate-200 rounded-lg text-xs font-normal font-sans p-1 text-slate-800"
                           >
                             <option>HKD</option>
                             <option>USD</option>
@@ -1097,12 +1097,12 @@ export default function App() {
                         <div className="flex-1">
                           <span className="block text-[9px] font-bold text-slate-400 uppercase">Amount</span>
                           <div className="relative">
-                            <span className="absolute left-2.5 top-1.5 text-xs font-bold text-slate-400">HK$</span>
+                            <span className="absolute left-2.5 top-1.5 text-xs font-normal font-sans text-slate-500">HK$</span>
                             <input
                               type="number"
                               value={claimAmount}
                               onChange={(e) => setClaimAmount(e.target.value)}
-                              className="w-full bg-white border border-slate-200 rounded-lg text-xs font-bold p-1 pl-9 text-slate-900 focus:ring-[#7E1925]"
+                              className="w-full bg-white border border-slate-200 rounded-lg text-xs font-normal font-sans p-1 pl-9 text-slate-800 focus:ring-[#7E1925]"
                             />
                           </div>
                         </div>
@@ -1113,7 +1113,7 @@ export default function App() {
                       onClick={() => setIncludeShipping(!includeShipping)}
                       className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2 cursor-pointer hover:bg-slate-100/60 transition"
                     >
-                      <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-600">
+                      <label className="flex items-center gap-2 cursor-pointer text-xs font-normal font-sans text-slate-600">
                         <input
                           type="checkbox"
                           checked={includeShipping}
@@ -1124,7 +1124,7 @@ export default function App() {
                       </label>
                       <div className="flex items-center justify-between text-xs text-slate-500 pl-6">
                         <span>Estimate amount:</span>
-                        <span className="font-mono font-bold text-slate-700">{includeShipping ? 'HK$ 450.00' : 'HK$ 0.00'}</span>
+                        <span className="font-sans font-normal text-xs text-slate-800">{includeShipping ? 'HK$ 450.00' : 'HK$ 0.00'}</span>
                       </div>
                     </div>
                   </div>
@@ -1180,8 +1180,8 @@ export default function App() {
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="font-signature text-xl text-[#7E1925] font-semibold italic">Rachel Tsang</span>
-                      <span className="text-[10px] font-semibold text-slate-500">Digitally Authenticated • 18 Feb 2025</span>
+                      <span className="font-sans text-xs font-normal text-slate-800">Rachel Tsang</span>
+                      <span className="text-[10px] font-normal text-slate-500">Digitally Authenticated • 18 Feb 2025</span>
                     </div>
                   </div>
 
@@ -1191,15 +1191,15 @@ export default function App() {
                       <span className="block text-[10px] font-bold text-amber-800 uppercase tracking-wider">
                         Signature of Endorser
                       </span>
-                      <span className="font-bold text-slate-800">Assigned to: {courseTutor || 'Dr. K. Wong'}</span>
+                      <span className="font-sans text-xs font-normal text-slate-800">Assigned to: {courseTutor || 'Dr. K. Wong'}</span>
                       <p className="text-[10px] text-slate-500">Pending digital sign-off after submission</p>
                     </div>
                     <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800">PENDING</span>
                   </div>
 
                   <div className="flex justify-between items-center text-xs text-slate-500 pt-1">
-                    <span className="font-bold text-slate-600">Date of Application</span>
-                    <span className="font-mono font-semibold text-slate-800">18/02/2025</span>
+                    <span className="text-slate-600">Date of Application</span>
+                    <span className="font-sans font-normal text-xs text-slate-800">18/02/2025</span>
                   </div>
                 </fieldset>
 
