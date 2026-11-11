@@ -295,8 +295,10 @@ export default function App() {
             {/* Rachel Tsang Avatar */}
             <button
               type="button"
-              onClick={() => setProfileModalOpen(true)}
-              className="relative rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7E1925]"
+              onClick={() => setProfileModalOpen(prev => !prev)}
+              className={`relative rounded-full transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7E1925] ${
+                profileModalOpen ? 'ring-2 ring-[#7E1925] ring-offset-2' : ''
+              }`}
               aria-label="Rachel Tsang Profile"
             >
               <img
@@ -379,17 +381,19 @@ export default function App() {
               </div>
 
               {/* Endorsed Competitions Banner */}
-              <div className="bg-gradient-to-r from-[#7E1925] to-[#9B1D2C] text-white rounded-2xl p-3.5 flex items-center justify-between shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+              <div className="bg-gradient-to-r from-[#7E1925] to-[#9B1D2C] text-white rounded-2xl p-3.5 flex items-center justify-between gap-3 shadow-sm">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                     <Award className="w-5 h-5 text-amber-300" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <span className="block text-[10px] font-black uppercase tracking-wider text-amber-200">Competitions & Awards</span>
-                    <p className="text-xs font-bold leading-tight">School of Design Endorsed Scheme</p>
+                    <p className="text-xs font-bold leading-tight truncate">School of Design Endorsed Scheme</p>
                   </div>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-md bg-white/20 text-[10px] font-black uppercase tracking-wider">TIER A</span>
+                <span className="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-white/20 text-[10px] font-black uppercase tracking-wider leading-none">
+                  TIER A
+                </span>
               </div>
 
               {/* 4-Step Process Overview Card */}
@@ -465,11 +469,11 @@ export default function App() {
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-500 status-pulse"></span>
                       Action Required
                     </span>
-                    <span className="text-xs font-bold text-[#7E1925] text-right font-mono">$4,800</span>
+                    <span className="text-[16px] font-bold text-[#7E1925] text-right font-mono">$4,800</span>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900">iF Student Design Award 2025</h3>
+                    <h3 className="text-[16px] font-bold text-slate-900 leading-snug">iF Student Design Award 2025</h3>
                     <p className="text-[11px] text-slate-500">Presentation Mockups & Entry Fee</p>
                   </div>
 
@@ -510,11 +514,11 @@ export default function App() {
                       <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                       In Review
                     </span>
-                    <span className="text-xs font-bold text-slate-700 font-mono">$2,400</span>
+                    <span className="text-[16px] font-bold text-slate-700 font-mono">$2,400</span>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-bold text-slate-900">Red Dot Award: Design Concept 2025</h3>
+                    <h3 className="text-[16px] font-bold text-slate-900 leading-snug">Red Dot Award: Brands &amp; Communication 2025</h3>
                     <p className="text-[11px] text-slate-500">International Category A Registration</p>
                   </div>
 
@@ -649,11 +653,10 @@ export default function App() {
               </button>
 
               <div className="bg-[#7E1925] text-white rounded-3xl p-5 space-y-2 shadow-md">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-rose-200 bg-white/10 px-2.5 py-0.5 rounded-full">
+                <div>
+                  <span className="inline-block whitespace-nowrap text-[10px] font-black uppercase tracking-wider text-rose-200 bg-white/10 px-2.5 py-0.5 rounded-full">
                     September 2025 – August 2026
                   </span>
-                  <span className="text-[10px] font-black uppercase tracking-widest text-amber-300">Official Form</span>
                 </div>
                 <h1 className="text-xl font-black tracking-tight leading-tight">
                   Competition/Award Subsidy Scheme for PolyU Design Students
@@ -1853,62 +1856,72 @@ export default function App() {
         {/* ========================================================= */}
         {/* SCREEN 05: PROFILE DRAWER / MODAL OVERLAY                 */}
         {/* ========================================================= */}
+        {/* ========================================================= */}
+        {/* SCREEN 05: PROFILE MENU (Dropdown below heading / avatar) */}
+        {/* ========================================================= */}
         {profileModalOpen && (
-          <div
-            className="absolute inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 transition-opacity animate-in fade-in duration-200"
-            onClick={() => setProfileModalOpen(false)}
-          >
+          <div className="absolute inset-0 z-50 overflow-hidden pointer-events-auto">
+            {/* Click-outside backdrop */}
             <div
-              className="bg-white w-full max-w-sm rounded-[32px] p-5 shadow-2xl space-y-4 border border-slate-200"
+              className="absolute inset-0 bg-slate-900/20 backdrop-blur-[1px] transition-opacity animate-in fade-in duration-150"
+              onClick={() => setProfileModalOpen(false)}
+            />
+
+            {/* Profile Dropdown Menu Card positioned directly below header & profile avatar */}
+            <div
+              className="absolute top-[60px] right-3 left-3 sm:left-auto sm:w-[345px] bg-white rounded-3xl p-4.5 shadow-2xl space-y-3.5 border border-slate-200/90 z-10 animate-in fade-in slide-in-from-top-2 duration-150"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-start justify-between">
+              {/* Pointer arrow pointing up to profile avatar */}
+              <div className="absolute -top-1.5 right-4 w-3.5 h-3.5 bg-white rotate-45 border-l border-t border-slate-200/90" />
+
+              <div className="flex items-start justify-between relative z-10">
                 <div className="flex items-center gap-3">
                   <div className="relative">
                     <img
-                      className="w-14 h-14 rounded-2xl object-cover ring-2 ring-[#7E1925]/20 shadow-sm"
+                      className="w-12 h-12 rounded-2xl object-cover ring-2 ring-[#7E1925]/20 shadow-sm"
                       src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=256"
                       alt="Rachel Tsang"
                     />
-                    <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center text-[9px] text-white">
+                    <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center text-[8px] text-white">
                       ✓
                     </span>
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-base font-extrabold text-slate-900">Rachel Tsang</h3>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-50 text-[#7E1925] border border-[#7E1925]/20">
+                      <h3 className="text-sm font-extrabold text-slate-900">Rachel Tsang</h3>
+                      <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-rose-50 text-[#7E1925] border border-[#7E1925]/20">
                         Year 3
                       </span>
                     </div>
-                    <p className="text-xs font-mono text-slate-500">22084912D • Media Design</p>
-                    <p className="text-[11px] text-slate-400">BA (Hons) Scheme in Design</p>
+                    <p className="text-[11px] font-mono text-slate-500">22084912D • Media Design</p>
+                    <p className="text-[10px] text-slate-400">BA (Hons) Scheme in Design</p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setProfileModalOpen(false)}
-                  className="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 focus:outline-none"
-                  aria-label="Close modal"
+                  className="p-1 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 focus:outline-none"
+                  aria-label="Close menu"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="p-2.5 bg-emerald-50 rounded-xl text-[11px] font-bold text-emerald-800 flex items-center gap-2">
+              <div className="p-2 bg-emerald-50 rounded-xl text-[11px] font-bold text-emerald-800 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                 Active Enrolment • Connected to PolyU ID
               </div>
 
               {/* Menu Navigation Items */}
-              <div className="space-y-1 text-xs font-bold text-slate-700 divide-y divide-slate-100">
+              <div className="space-y-0.5 text-xs font-bold text-slate-700 divide-y divide-slate-100">
                 <button
                   type="button"
                   onClick={() => {
                     setProfileModalOpen(false);
                     showToast('Profile: Rachel Tsang (22084912D) • Academic Mentor: Dr. K. Wong');
                   }}
-                  className="w-full py-3 flex items-center justify-between hover:text-[#7E1925] transition text-left"
+                  className="w-full py-2.5 flex items-center justify-between hover:text-[#7E1925] transition text-left"
                 >
                   <div className="flex items-center gap-2.5">
                     <User className="w-4 h-4 text-slate-400" />
@@ -1923,7 +1936,7 @@ export default function App() {
                     setProfileModalOpen(false);
                     navigateTo('tracker');
                   }}
-                  className="w-full py-3 flex items-center justify-between hover:text-[#7E1925] transition text-left"
+                  className="w-full py-2.5 flex items-center justify-between hover:text-[#7E1925] transition text-left"
                 >
                   <div className="flex items-center gap-2.5">
                     <Award className="w-4 h-4 text-slate-400" />
@@ -1943,7 +1956,7 @@ export default function App() {
                     setProfileModalOpen(false);
                     navigateTo('vault');
                   }}
-                  className="w-full py-3 flex items-center justify-between hover:text-[#7E1925] transition text-left"
+                  className="w-full py-2.5 flex items-center justify-between hover:text-[#7E1925] transition text-left"
                 >
                   <div className="flex items-center gap-2.5">
                     <Lock className="w-4 h-4 text-slate-400" />
@@ -1956,7 +1969,7 @@ export default function App() {
                   href="/standalone.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 flex items-center justify-between hover:text-[#7E1925] transition text-left"
+                  className="w-full py-2.5 flex items-center justify-between hover:text-[#7E1925] transition text-left"
                 >
                   <div className="flex items-center gap-2.5">
                     <Download className="w-4 h-4 text-slate-400" />
@@ -1971,7 +1984,7 @@ export default function App() {
                     setProfileModalOpen(false);
                     showToast('Sign out simulated. PolyU NetID session closed.');
                   }}
-                  className="w-full py-3 flex items-center justify-between text-rose-600 hover:text-rose-800 transition text-left"
+                  className="w-full py-2.5 flex items-center justify-between text-rose-600 hover:text-rose-800 transition text-left"
                 >
                   <div className="flex items-center gap-2.5">
                     <X className="w-4 h-4 text-rose-500" />
@@ -1981,12 +1994,12 @@ export default function App() {
                 </button>
               </div>
 
-              <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+              <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
                 <span className="flex items-center gap-1 font-semibold text-slate-600">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                   PolyU NetID Authenticated
                 </span>
-                <span className="font-mono text-[10px]">v2.4.1</span>
+                <span className="font-mono text-[9px]">v2.4.1</span>
               </div>
             </div>
           </div>

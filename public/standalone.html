@@ -65,7 +65,7 @@
           <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-[#7E1925] rounded-full ring-2 ring-white"></span>
         </button>
 
-        <button type="button" onclick="toggleProfileModal(true)" class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7E1925]" aria-label="Rachel Tsang Profile">
+        <button type="button" onclick="toggleProfileModal()" class="relative rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7E1925]" aria-label="Rachel Tsang Profile">
           <img class="w-9 h-9 rounded-full object-cover ring-2 ring-[#7E1925]/20" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=256" alt="Rachel Tsang">
           <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white"></span>
         </button>
@@ -125,17 +125,19 @@
         </div>
 
         <!-- Competitions Banner -->
-        <div class="bg-gradient-to-r from-[#7E1925] to-[#9B1D2C] text-white rounded-2xl p-3.5 flex items-center justify-between shadow-sm">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+        <div class="bg-gradient-to-r from-[#7E1925] to-[#9B1D2C] text-white rounded-2xl p-3.5 flex items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
               <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
             </div>
-            <div>
+            <div class="min-w-0">
               <span class="block text-[10px] font-black uppercase tracking-wider text-amber-200">Competitions & Awards</span>
-              <p class="text-xs font-bold leading-tight">School of Design Endorsed Scheme</p>
+              <p class="text-xs font-bold leading-tight truncate">School of Design Endorsed Scheme</p>
             </div>
           </div>
-          <span class="px-2.5 py-0.5 rounded-md bg-white/20 text-[10px] font-black uppercase tracking-wider">TIER A</span>
+          <span class="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-white/20 text-[10px] font-black uppercase tracking-wider leading-none">
+            TIER A
+          </span>
         </div>
 
         <!-- 4-Step Process Overview -->
@@ -193,11 +195,11 @@
                 <span class="w-1.5 h-1.5 rounded-full bg-amber-500 status-pulse"></span>
                 Action Required
               </span>
-              <span class="text-xs font-bold text-[#7E1925] text-right font-mono">$4,800</span>
+              <span class="text-[16px] font-bold text-[#7E1925] text-right font-mono">$4,800</span>
             </div>
 
             <div>
-              <h3 class="text-sm font-bold text-slate-900">iF Student Design Award 2025</h3>
+              <h3 class="text-[16px] font-bold text-slate-900 leading-snug">iF Student Design Award 2025</h3>
               <p class="text-[11px] text-slate-500">Presentation Mockups & Entry Fee</p>
             </div>
 
@@ -227,11 +229,11 @@
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                 In Review
               </span>
-              <span class="text-xs font-bold text-slate-700 font-mono">$2,400</span>
+              <span class="text-[16px] font-bold text-slate-700 font-mono">$2,400</span>
             </div>
 
             <div>
-              <h3 class="text-sm font-bold text-slate-900">Red Dot Award: Design Concept 2025</h3>
+              <h3 class="text-[16px] font-bold text-slate-900 leading-snug">Red Dot Award: Brands &amp; Communication 2025</h3>
               <p class="text-[11px] text-slate-500">International Category A Registration</p>
             </div>
 
@@ -341,9 +343,8 @@
         </button>
 
         <div class="bg-[#7E1925] text-white rounded-3xl p-5 space-y-2 shadow-md">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-black uppercase tracking-wider text-rose-200 bg-white/10 px-2.5 py-0.5 rounded-full">September 2025 – August 2026</span>
-            <span class="text-[10px] font-black uppercase tracking-widest text-amber-300">Official Form</span>
+          <div>
+            <span class="inline-block whitespace-nowrap text-[10px] font-black uppercase tracking-wider text-rose-200 bg-white/10 px-2.5 py-0.5 rounded-full">September 2025 – August 2026</span>
           </div>
           <h1 class="text-xl font-black tracking-tight leading-tight">Competition/Award Subsidy Scheme for PolyU Design Students</h1>
           <p class="text-xs text-rose-100">APPLICATION FORM</p>
@@ -1206,37 +1207,44 @@
 
 
     <!-- ========================================================= -->
-    <!-- SCREEN 05: PROFILE MENU / MODAL OVERLAY (Hidden)          -->
+    <!-- SCREEN 05: PROFILE MENU (Dropdown below heading / avatar) -->
     <!-- ========================================================= -->
-    <div id="modal-profile" class="hidden absolute inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 transition-opacity">
-      <div class="bg-white w-full max-w-sm rounded-[32px] p-5 shadow-2xl space-y-4 border border-slate-200">
-        <div class="flex items-start justify-between">
+    <div id="modal-profile" class="hidden absolute inset-0 z-50 overflow-hidden">
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-slate-900/20 backdrop-blur-[1px] transition-opacity" onclick="toggleProfileModal(false)"></div>
+
+      <!-- Dropdown Card -->
+      <div class="absolute top-[60px] right-3 left-3 sm:left-auto sm:w-[345px] bg-white rounded-3xl p-4.5 shadow-2xl space-y-3.5 border border-slate-200 z-10" onclick="event.stopPropagation()">
+        <!-- Pointer arrow pointing up to profile avatar -->
+        <div class="absolute -top-1.5 right-4 w-3.5 h-3.5 bg-white rotate-45 border-l border-t border-slate-200"></div>
+
+        <div class="flex items-start justify-between relative z-10">
           <div class="flex items-center gap-3">
             <div class="relative">
-              <img class="w-14 h-14 rounded-2xl object-cover ring-2 ring-[#7E1925]/20 shadow-sm" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=256" alt="Rachel Tsang">
-              <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center text-[9px] text-white">✓</span>
+              <img class="w-12 h-12 rounded-2xl object-cover ring-2 ring-[#7E1925]/20 shadow-sm" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=256" alt="Rachel Tsang">
+              <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center text-[8px] text-white">✓</span>
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <h3 class="text-base font-extrabold text-slate-900">Rachel Tsang</h3>
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-50 text-[#7E1925] border border-[#7E1925]/20">Year 3</span>
+                <h3 class="text-sm font-extrabold text-slate-900">Rachel Tsang</h3>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-rose-50 text-[#7E1925] border border-[#7E1925]/20">Year 3</span>
               </div>
-              <p class="text-xs font-mono text-slate-500">22084912D • Media Design</p>
-              <p class="text-[11px] text-slate-400">BA (Hons) Scheme in Design</p>
+              <p class="text-[11px] font-mono text-slate-500">22084912D • Media Design</p>
+              <p class="text-[10px] text-slate-400">BA (Hons) Scheme in Design</p>
             </div>
           </div>
-          <button type="button" onclick="toggleProfileModal(false)" class="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 focus:outline-none" aria-label="Close modal">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <button type="button" onclick="toggleProfileModal(false)" class="p-1 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 focus:outline-none" aria-label="Close menu">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
 
-        <div class="p-2.5 bg-emerald-50 rounded-xl text-[11px] font-bold text-emerald-800 flex items-center gap-2">
+        <div class="p-2 bg-emerald-50 rounded-xl text-[11px] font-bold text-emerald-800 flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
           Active Enrolment • Connected to PolyU ID
         </div>
 
-        <div class="space-y-1 text-xs font-bold text-slate-700 divide-y divide-slate-100">
-          <button type="button" onclick="toggleProfileModal(false); showToast('Profile details: Enrolled in Interactive Media, School of Design.');" class="w-full py-3 flex items-center justify-between hover:text-[#7E1925] transition">
+        <div class="space-y-0.5 text-xs font-bold text-slate-700 divide-y divide-slate-100">
+          <button type="button" onclick="toggleProfileModal(false); showToast('Profile details: Enrolled in Interactive Media, School of Design.');" class="w-full py-2.5 flex items-center justify-between hover:text-[#7E1925] transition">
             <div class="flex items-center gap-2.5">
               <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
               <span>Student Profile</span>
@@ -1244,7 +1252,7 @@
             <span class="text-slate-400">&rarr;</span>
           </button>
 
-          <button type="button" onclick="toggleProfileModal(false); navigateTo('screen-tracker');" class="w-full py-3 flex items-center justify-between hover:text-[#7E1925] transition">
+          <button type="button" onclick="toggleProfileModal(false); navigateTo('screen-tracker');" class="w-full py-2.5 flex items-center justify-between hover:text-[#7E1925] transition">
             <div class="flex items-center gap-2.5">
               <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
               <span>Past Competitions</span>
@@ -1255,7 +1263,7 @@
             </div>
           </button>
 
-          <button type="button" onclick="toggleProfileModal(false); navigateTo('screen-vault');" class="w-full py-3 flex items-center justify-between hover:text-[#7E1925] transition">
+          <button type="button" onclick="toggleProfileModal(false); navigateTo('screen-vault');" class="w-full py-2.5 flex items-center justify-between hover:text-[#7E1925] transition">
             <div class="flex items-center gap-2.5">
               <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
               <span>Settings &amp; Security</span>
@@ -1263,7 +1271,7 @@
             <span class="text-slate-400">&rarr;</span>
           </button>
 
-          <button type="button" onclick="toggleProfileModal(false); showToast('Sign out simulated. NetID token cleared.')" class="w-full py-3 flex items-center justify-between text-rose-600 hover:text-rose-800 transition">
+          <button type="button" onclick="toggleProfileModal(false); showToast('Sign out simulated. NetID token cleared.')" class="w-full py-2.5 flex items-center justify-between text-rose-600 hover:text-rose-800 transition">
             <div class="flex items-center gap-2.5">
               <svg class="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
               <span>Sign Out</span>
@@ -1272,12 +1280,12 @@
           </button>
         </div>
 
-        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
           <span class="flex items-center gap-1 font-semibold text-slate-600">
             <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             PolyU NetID Authenticated
           </span>
-          <span class="font-mono text-[10px]">v2.4.1</span>
+          <span class="font-mono text-[9px]">v2.4.1</span>
         </div>
       </div>
     </div>
@@ -1362,7 +1370,9 @@
     function toggleProfileModal(show) {
       const modal = document.getElementById('modal-profile');
       if (!modal) return;
-      if (show) {
+      if (show === undefined) {
+        modal.classList.toggle('hidden');
+      } else if (show) {
         modal.classList.remove('hidden');
       } else {
         modal.classList.add('hidden');
