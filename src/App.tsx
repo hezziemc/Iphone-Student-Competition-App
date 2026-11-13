@@ -55,6 +55,7 @@ export default function App() {
   const [policyModalOpen, setPolicyModalOpen] = useState(false);
   const [invoiceModalOpen, setInvoiceModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [trackerFilter, setTrackerFilter] = useState<'received' | 'pending' | 'granted' | 'declined' | null>(null);
 
   // Financial Quota State
   const [capTotal] = useState(15000);
@@ -387,8 +388,8 @@ export default function App() {
                     <Award className="w-5 h-5 text-amber-300" />
                   </div>
                   <div className="min-w-0">
-                    <span className="block text-[10px] font-black uppercase tracking-wider text-amber-200">Competitions & Awards</span>
-                    <p className="text-xs font-bold leading-tight truncate">School of Design Endorsed Scheme</p>
+                    <span className="block text-[16px] font-black uppercase tracking-wider text-amber-200">Competitions & Awards</span>
+                    <p className="text-[12px] font-bold leading-tight truncate">School of Design Endorsed Scheme</p>
                   </div>
                 </div>
                 <span className="shrink-0 whitespace-nowrap px-2.5 py-1 rounded-md bg-white/20 text-[10px] font-black uppercase tracking-wider leading-none">
@@ -399,7 +400,7 @@ export default function App() {
               {/* 4-Step Process Overview Card */}
               <div className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-sm space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-600">4-Step Subsidy Process</span>
+                  <span className="text-[16px] font-extrabold uppercase tracking-wider text-slate-600">4-Step Subsidy Process</span>
                   <button
                     type="button"
                     onClick={() => setPolicyModalOpen(true)}
@@ -413,19 +414,19 @@ export default function App() {
                 <div className="grid grid-cols-4 gap-2 text-center pt-1">
                   <div className="space-y-1.5 flex flex-col items-center">
                     <div className="w-9 h-9 rounded-full bg-[#7E1925] text-white font-bold text-xs flex items-center justify-center shadow-sm">1</div>
-                    <span className="text-[11px] font-semibold text-slate-700">Form</span>
+                    <span className="text-[14px] font-semibold text-slate-700">Form</span>
                   </div>
                   <div className="space-y-1.5 flex flex-col items-center">
                     <div className="w-9 h-9 rounded-full bg-[#7E1925] text-white font-bold text-xs flex items-center justify-center shadow-sm">2</div>
-                    <span className="text-[11px] font-semibold text-slate-700">Verify</span>
+                    <span className="text-[14px] font-semibold text-slate-700">Verify</span>
                   </div>
                   <div className="space-y-1.5 flex flex-col items-center">
                     <div className="w-9 h-9 rounded-full bg-[#7E1925] text-white font-bold text-xs flex items-center justify-center shadow-sm">3</div>
-                    <span className="text-[11px] font-semibold text-slate-700">Vault</span>
+                    <span className="text-[14px] font-semibold text-slate-700">Vault</span>
                   </div>
                   <div className="space-y-1.5 flex flex-col items-center">
                     <div className="w-9 h-9 rounded-full bg-slate-100 text-slate-400 font-bold text-xs flex items-center justify-center">4</div>
-                    <span className="text-[11px] font-medium text-slate-400">Reimburse</span>
+                    <span className="text-[14px] font-medium text-slate-400">Reimburse</span>
                   </div>
                 </div>
 
@@ -562,7 +563,7 @@ export default function App() {
                     <div className="w-8 h-8 rounded-xl bg-amber-100 flex items-center justify-center text-amber-800 mb-2">
                       <CreditCard className="w-4 h-4" />
                     </div>
-                    <h4 className="text-xs font-bold text-slate-900 leading-tight">Reimbursement Vault</h4>
+                    <h4 className="text-[16px] font-bold text-slate-900 leading-tight">Reimbursement Vault</h4>
                     <p className="text-[10px] text-slate-500 mt-0.5 leading-snug">Bank details, tax invoices & payout records</p>
                     <span className="text-[10px] font-bold text-amber-900 mt-2 block">View details &rarr;</span>
                   </button>
@@ -578,7 +579,7 @@ export default function App() {
                       </div>
                       <span className="text-[10px] font-bold text-slate-500">{applications.length} items</span>
                     </div>
-                    <h4 className="text-xs font-bold text-slate-900 leading-tight">Outbox & Archives</h4>
+                    <h4 className="text-[16px] font-bold text-slate-900 leading-tight">Outbox & Archives</h4>
                     <p className="text-[10px] text-slate-500 mt-0.5 leading-snug">Endorsement trails & approved grant letters</p>
                     <span className="text-[10px] font-bold text-[#7E1925] mt-2 block">View details &rarr;</span>
                   </button>
@@ -618,7 +619,7 @@ export default function App() {
                   <svg className="w-4 h-4 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 4v12m0-12l-4 4m4-4l4 4" />
                   </svg>
-                  <span>UPLOAD AWARD CERTIFICATE</span>
+                  <span className="text-[14px]">UPLOAD AWARD CERTIFICATE</span>
                 </button>
               </div>
 
@@ -647,23 +648,23 @@ export default function App() {
               <button
                 type="button"
                 onClick={() => navigateTo('dashboard')}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#7E1925] hover:underline"
+                className="inline-flex items-center gap-1.5 text-[15px] font-bold text-[#7E1925] hover:underline"
               >
                 &larr; BACK TO DASHBOARD
               </button>
 
-              <div className="bg-[#7E1925] text-white rounded-3xl p-5 space-y-2 shadow-md">
+              <div className="bg-[#7E1925] text-white rounded-3xl p-5 space-y-2.5 shadow-md">
                 <div>
-                  <span className="inline-block whitespace-nowrap text-[10px] font-black uppercase tracking-wider text-rose-200 bg-white/10 px-2.5 py-0.5 rounded-full">
+                  <span className="inline-block whitespace-nowrap text-[15px] font-bold tracking-wide text-rose-100 bg-white/10 px-3 py-1 rounded-full">
                     September 2025 – August 2026
                   </span>
                 </div>
-                <h1 className="text-xl font-black tracking-tight leading-tight">
+                <h1 className="text-[22px] font-black tracking-tight leading-tight">
                   Competition/Award Subsidy Scheme for PolyU Design Students
                 </h1>
-                <p className="text-xs text-rose-100">APPLICATION FORM</p>
-                <div className="inline-flex items-center gap-1.5 bg-[#65131D]/60 px-3 py-1 rounded-full text-[11px] font-bold text-rose-200">
-                  <Zap className="w-3.5 h-3.5 text-amber-300" />
+                <p className="text-[15px] text-rose-100 font-medium">APPLICATION FORM</p>
+                <div className="inline-flex items-center gap-2 bg-[#65131D]/60 px-3.5 py-1.5 rounded-full text-[15px] font-bold text-rose-100">
+                  <Zap className="w-4 h-4 text-amber-300 shrink-0" />
                   Remaining Cap: HK${capRemaining.toLocaleString()} / 15,000
                 </div>
               </div>
@@ -672,26 +673,26 @@ export default function App() {
 
                 {/* 01 Applicant's Information */}
                 <fieldset className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <legend className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-xs font-black flex items-center justify-center">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                    <legend className="text-[18px] font-extrabold text-slate-900 flex items-center gap-2">
+                      <span className="w-7 h-7 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-[15px] font-black flex items-center justify-center shrink-0">
                         01
                       </span>
                       Applicant's Information
                     </legend>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-2 py-0.5 rounded">
+                    <span className="text-[15px] font-bold text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded shrink-0">
                       Required
                     </span>
                   </div>
 
                   {/* Salutation */}
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Salutation *</label>
+                    <label className="text-[15px] font-bold text-slate-600">Salutation *</label>
                     <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
                         onClick={() => setSalutation('Mr')}
-                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-normal font-sans transition ${
+                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-[15px] font-normal font-sans transition ${
                           salutation === 'Mr'
                             ? 'border-2 border-[#7E1925] bg-[#7E1925]/5 text-[#7E1925]'
                             : 'border-slate-200 hover:bg-slate-50 text-slate-700'
@@ -702,7 +703,7 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setSalutation('Ms')}
-                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-xs font-normal font-sans transition ${
+                        className={`flex items-center justify-center gap-2 p-2.5 rounded-xl border text-[15px] font-normal font-sans transition ${
                           salutation === 'Ms'
                             ? 'border-2 border-[#7E1925] bg-[#7E1925]/5 text-[#7E1925]'
                             : 'border-slate-200 hover:bg-slate-50 text-slate-700'
@@ -715,11 +716,11 @@ export default function App() {
 
                   {/* Full Name */}
                   <div className="space-y-1">
-                    <div className="flex justify-between items-center">
-                      <label htmlFor="form-fullname" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <div className="flex flex-wrap justify-between items-center gap-1">
+                      <label htmlFor="form-fullname" className="text-[15px] font-bold text-slate-600">
                         Full Name *
                       </label>
-                      <span className="text-[10px] text-emerald-600 font-bold">PROFILE AUTO-FILLED</span>
+                      <span className="text-[15px] text-emerald-600 font-bold">Profile Auto-Filled</span>
                     </div>
                     <div className="relative">
                       <input
@@ -727,15 +728,15 @@ export default function App() {
                         id="form-fullname"
                         value="Rachel Tsang"
                         readOnly
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800 pl-9 cursor-not-allowed"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800 pl-10 cursor-not-allowed"
                       />
-                      <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                      <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                     </div>
                   </div>
 
                   {/* Student ID */}
                   <div className="space-y-1">
-                    <label htmlFor="form-student-id" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <label htmlFor="form-student-id" className="text-[15px] font-bold text-slate-600">
                       Student ID *
                     </label>
                     <div className="relative">
@@ -744,16 +745,16 @@ export default function App() {
                         id="form-student-id"
                         value="22084912D"
                         readOnly
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800 pl-9"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800 pl-10"
                       />
-                      <Building2 className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                      <Building2 className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                     </div>
                   </div>
 
                   {/* Tel & Email */}
                   <div className="grid grid-cols-1 gap-3">
                     <div className="space-y-1">
-                      <label htmlFor="form-tel" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                      <label htmlFor="form-tel" className="text-[15px] font-bold text-slate-600">
                         Tel. No. *
                       </label>
                       <input
@@ -761,11 +762,11 @@ export default function App() {
                         id="form-tel"
                         value={tel}
                         onChange={(e) => setTel(e.target.value)}
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925] focus:border-[#7E1925]"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925] focus:border-[#7E1925]"
                       />
                     </div>
                     <div className="space-y-1">
-                      <label htmlFor="form-email" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                      <label htmlFor="form-email" className="text-[15px] font-bold text-slate-600">
                         Email *
                       </label>
                       <input
@@ -773,21 +774,21 @@ export default function App() {
                         id="form-email"
                         value="rachel.tsang@connect.polyu.hk"
                         readOnly
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800"
                       />
                     </div>
                   </div>
 
                   {/* Study Year */}
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Study Year *</label>
-                    <div className="grid grid-cols-5 gap-1.5 text-center text-xs">
+                    <label className="text-[15px] font-bold text-slate-600">Study Year *</label>
+                    <div className="grid grid-cols-3 gap-2 text-center text-[15px]">
                       {['Year 1', 'Year 2', 'Year 3', 'Year 4', '2025 grad'].map((yr) => (
                         <button
                           key={yr}
                           type="button"
                           onClick={() => setStudyYear(yr)}
-                          className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
+                          className={`py-2 px-2 rounded-xl border text-[15px] font-normal font-sans transition ${
                             studyYear === yr
                               ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
                               : 'border-slate-200 text-slate-600 hover:bg-slate-50'
@@ -801,25 +802,25 @@ export default function App() {
 
                   {/* Specialisms List */}
                   <div className="space-y-2 pt-2">
-                    <label className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
+                    <label className="text-[15px] font-bold text-slate-700 block">
                       BA(Hons) Scheme in Design Specialisms
-                      <span className="block text-[10px] font-normal text-slate-400 normal-case">Select Specialism</span>
+                      <span className="block text-[15px] font-normal text-slate-500">Select Specialism</span>
                     </label>
 
-                    <div className="space-y-1.5 max-h-52 overflow-y-auto no-scrollbar border border-slate-100 rounded-2xl p-2 bg-slate-50/50">
+                    <div className="space-y-1.5 max-h-60 overflow-y-auto no-scrollbar border border-slate-100 rounded-2xl p-2 bg-slate-50/50">
                       {specialismsList.map((item) => (
                         <button
                           key={item}
                           type="button"
                           onClick={() => setSpecialism(item)}
-                          className={`w-full text-left flex items-center gap-2.5 p-2 rounded-xl text-xs font-normal font-sans transition ${
+                          className={`w-full text-left flex items-center gap-2.5 p-2.5 rounded-xl text-[15px] font-normal font-sans transition ${
                             specialism === item
                               ? 'bg-[#7E1925]/5 border-2 border-[#7E1925] text-[#7E1925]'
                               : 'bg-white border border-slate-200 text-slate-700 hover:border-slate-300'
                           }`}
                         >
                           <span
-                            className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center shrink-0 ${
+                            className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
                               specialism === item ? 'border-[#7E1925] bg-[#7E1925]' : 'border-slate-300'
                             }`}
                           >
@@ -833,7 +834,7 @@ export default function App() {
 
                   {/* 2025 Graduate Input */}
                   <div className="space-y-1 pt-1">
-                    <label htmlFor="form-grad-prog" className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    <label htmlFor="form-grad-prog" className="text-[15px] font-bold text-slate-500 block">
                       If 2025 Graduate: Programme Name (BA Only)
                     </label>
                     <input
@@ -842,7 +843,7 @@ export default function App() {
                       value={gradProgramme}
                       onChange={(e) => setGradProgramme(e.target.value)}
                       placeholder="Leave blank if currently enrolled"
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-normal font-sans text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-[#7E1925]"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-[#7E1925]"
                     />
                   </div>
                 </fieldset>
@@ -850,8 +851,8 @@ export default function App() {
                 {/* 02 Competition Information */}
                 <fieldset className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <legend className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-xs font-black flex items-center justify-center">
+                    <legend className="text-[18px] font-extrabold text-slate-900 flex items-center gap-2">
+                      <span className="w-7 h-7 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-[15px] font-black flex items-center justify-center shrink-0">
                         02
                       </span>
                       Competition Information
@@ -859,7 +860,7 @@ export default function App() {
                   </div>
 
                   <div className="space-y-1">
-                    <label htmlFor="form-comp-title" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <label htmlFor="form-comp-title" className="text-[15px] font-bold text-slate-600">
                       Title of Competition / Award *
                     </label>
                     <input
@@ -868,12 +869,12 @@ export default function App() {
                       value={compTitle}
                       onChange={(e) => setCompTitle(e.target.value)}
                       required
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label htmlFor="form-comp-url" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <label htmlFor="form-comp-url" className="text-[15px] font-bold text-slate-600">
                       Official URL *
                     </label>
                     <div className="relative">
@@ -883,37 +884,37 @@ export default function App() {
                         value={compUrl}
                         onChange={(e) => setCompUrl(e.target.value)}
                         required
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800 pl-9 focus:ring-2 focus:ring-[#7E1925]"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800 pl-10 focus:ring-2 focus:ring-[#7E1925]"
                       />
-                      <ExternalLink className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                      <ExternalLink className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                     </div>
                   </div>
 
                   <div className="space-y-1">
-                    <div className="flex justify-between">
-                      <label htmlFor="form-category" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <div className="flex flex-wrap justify-between items-center gap-1">
+                      <label htmlFor="form-category" className="text-[15px] font-bold text-slate-600">
                         Category
                       </label>
-                      <span className="text-[10px] text-slate-400">(IF ANY)</span>
+                      <span className="text-[15px] text-slate-400">(If any)</span>
                     </div>
                     <input
                       type="text"
                       id="form-category"
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Recognition Level *</label>
+                    <label className="text-[15px] font-bold text-slate-600">Recognition Level *</label>
                     <div className="grid grid-cols-3 gap-2">
                       {(['Local', 'National', 'International'] as const).map((lvl) => (
                         <button
                           key={lvl}
                           type="button"
                           onClick={() => setRecognitionLevel(lvl)}
-                          className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
+                          className={`py-2 px-1 rounded-xl border text-[15px] font-normal font-sans transition ${
                             recognitionLevel === lvl
                               ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
                               : 'border-slate-200 text-slate-600 hover:bg-slate-50'
@@ -926,38 +927,38 @@ export default function App() {
                   </div>
 
                   <div className="space-y-1">
-                    <div className="flex justify-between">
-                      <label htmlFor="form-announcement-date" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <div className="flex flex-wrap justify-between items-center gap-1">
+                      <label htmlFor="form-announcement-date" className="text-[15px] font-bold text-slate-600">
                         Result Announcement Date *
                       </label>
-                      <span className="text-[10px] text-slate-400">(DD/MM/YYYY)</span>
+                      <span className="text-[15px] text-slate-400">(DD/MM/YYYY)</span>
                     </div>
                     <input
                       type="date"
                       id="form-announcement-date"
                       value={announcementDate}
                       onChange={(e) => setAnnouncementDate(e.target.value)}
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2 text-xs font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800 focus:ring-2 focus:ring-[#7E1925]"
                     />
                   </div>
                 </fieldset>
 
                 {/* 03 Project Details */}
                 <fieldset className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <legend className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-xs font-black flex items-center justify-center">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                    <legend className="text-[18px] font-extrabold text-slate-900 flex items-center gap-2">
+                      <span className="w-7 h-7 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-[15px] font-black flex items-center justify-center shrink-0">
                         03
                       </span>
                       Project Details
                     </legend>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                    <span className="text-[15px] font-bold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded shrink-0">
                       Project Info
                     </span>
                   </div>
 
                   <div className="space-y-1">
-                    <label htmlFor="form-project-title" className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <label htmlFor="form-project-title" className="text-[15px] font-bold text-slate-600">
                       Title of Project *
                     </label>
                     <input
@@ -966,18 +967,18 @@ export default function App() {
                       value={projectTitle}
                       onChange={(e) => setProjectTitle(e.target.value)}
                       required
-                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs font-normal font-sans text-slate-800"
+                      className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800"
                     />
                   </div>
 
                   {/* Group Project Toggle */}
                   <div className="space-y-2">
-                    <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">Is it a Group Project? *</label>
+                    <label className="text-[15px] font-bold text-slate-600 block">Is it a Group Project? *</label>
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         type="button"
                         onClick={() => setIsGroup(false)}
-                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
+                        className={`py-2 rounded-xl border text-[15px] font-normal font-sans transition ${
                           !isGroup
                             ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
                             : 'border-slate-200 text-slate-600'
@@ -988,7 +989,7 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setIsGroup(true)}
-                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
+                        className={`py-2 rounded-xl border text-[15px] font-normal font-sans transition ${
                           isGroup
                             ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
                             : 'border-slate-200 text-slate-600'
@@ -1000,7 +1001,7 @@ export default function App() {
 
                     {isGroup && (
                       <div className="space-y-1 pt-1">
-                        <label htmlFor="form-group-members" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                        <label htmlFor="form-group-members" className="text-[15px] font-bold text-slate-500">
                           Other Group Member(s) from SD:
                         </label>
                         <textarea
@@ -1008,7 +1009,7 @@ export default function App() {
                           rows={2}
                           value={groupMembers}
                           onChange={(e) => setGroupMembers(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs font-normal font-sans text-slate-800"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-[15px] font-normal font-sans text-slate-800"
                         />
                       </div>
                     )}
@@ -1016,12 +1017,12 @@ export default function App() {
 
                   {/* Coursework Toggle */}
                   <div className="space-y-2">
-                    <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">Is it a Coursework? *</label>
+                    <label className="text-[15px] font-bold text-slate-600 block">Is it a Coursework? *</label>
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         type="button"
                         onClick={() => setIsCoursework(false)}
-                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
+                        className={`py-2 rounded-xl border text-[15px] font-normal font-sans transition ${
                           !isCoursework
                             ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
                             : 'border-slate-200 text-slate-600'
@@ -1032,7 +1033,7 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => setIsCoursework(true)}
-                        className={`py-2 rounded-xl border text-xs font-normal font-sans transition ${
+                        className={`py-2 rounded-xl border text-[15px] font-normal font-sans transition ${
                           isCoursework
                             ? 'border-2 border-[#7E1925] bg-[#7E1925]/10 text-[#7E1925]'
                             : 'border-slate-200 text-slate-600'
@@ -1045,7 +1046,7 @@ export default function App() {
                     {isCoursework && (
                       <div className="space-y-2 pt-1">
                         <div className="space-y-1">
-                          <label htmlFor="form-subject" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                          <label htmlFor="form-subject" className="text-[15px] font-bold text-slate-500">
                             Subject:
                           </label>
                           <input
@@ -1053,11 +1054,11 @@ export default function App() {
                             id="form-subject"
                             value={courseSubject}
                             onChange={(e) => setCourseSubject(e.target.value)}
-                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-normal font-sans text-slate-800"
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800"
                           />
                         </div>
                         <div className="space-y-1">
-                          <label htmlFor="form-tutor" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                          <label htmlFor="form-tutor" className="text-[15px] font-bold text-slate-500">
                             Tutor's Name:
                           </label>
                           <input
@@ -1065,7 +1066,7 @@ export default function App() {
                             id="form-tutor"
                             value={courseTutor}
                             onChange={(e) => setCourseTutor(e.target.value)}
-                            className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-normal font-sans text-slate-800"
+                            className="w-full bg-white border border-slate-200 rounded-xl px-3.5 py-2.5 text-[15px] font-normal font-sans text-slate-800"
                           />
                         </div>
                       </div>
@@ -1073,21 +1074,21 @@ export default function App() {
                   </div>
 
                   {/* Applying For Selection */}
-                  <div className="space-y-2 pt-2 border-t border-slate-100">
-                    <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">Applying For *</label>
+                  <div className="space-y-2.5 pt-2 border-t border-slate-100">
+                    <label className="text-[15px] font-bold text-slate-600 block">Applying For *</label>
 
-                    <div className="p-3 bg-[#7E1925]/5 border-2 border-[#7E1925] rounded-2xl space-y-2">
-                      <div className="flex items-center gap-2 text-xs font-normal font-sans text-[#7E1925]">
-                        <CheckCircle2 className="w-4 h-4 text-[#7E1925]" />
+                    <div className="p-3.5 bg-[#7E1925]/5 border-2 border-[#7E1925] rounded-2xl space-y-2.5">
+                      <div className="flex items-center gap-2 text-[15px] font-normal font-sans text-[#7E1925]">
+                        <CheckCircle2 className="w-4 h-4 text-[#7E1925] shrink-0" />
                         <span>Entrance fee's subsidy</span>
                       </div>
-                      <div className="flex items-center gap-2 pl-6">
-                        <div className="w-24">
-                          <span className="block text-[9px] font-bold text-slate-400 uppercase">Currency</span>
+                      <div className="flex items-end gap-2 pl-5">
+                        <div className="w-28">
+                          <span className="block text-[15px] font-bold text-slate-500 mb-1">Currency</span>
                           <select
                             value={claimCurrency}
                             onChange={(e) => setClaimCurrency(e.target.value)}
-                            className="w-full bg-white border border-slate-200 rounded-lg text-xs font-normal font-sans p-1 text-slate-800"
+                            className="w-full bg-white border border-slate-200 rounded-lg text-[15px] font-normal font-sans p-2 text-slate-800"
                           >
                             <option>HKD</option>
                             <option>USD</option>
@@ -1095,14 +1096,14 @@ export default function App() {
                           </select>
                         </div>
                         <div className="flex-1">
-                          <span className="block text-[9px] font-bold text-slate-400 uppercase">Amount</span>
+                          <span className="block text-[15px] font-bold text-slate-500 mb-1">Amount</span>
                           <div className="relative">
-                            <span className="absolute left-2.5 top-1.5 text-xs font-normal font-sans text-slate-500">HK$</span>
+                            <span className="absolute left-3 top-2 text-[15px] font-normal font-sans text-slate-500">HK$</span>
                             <input
                               type="number"
                               value={claimAmount}
                               onChange={(e) => setClaimAmount(e.target.value)}
-                              className="w-full bg-white border border-slate-200 rounded-lg text-xs font-normal font-sans p-1 pl-9 text-slate-800 focus:ring-[#7E1925]"
+                              className="w-full bg-white border border-slate-200 rounded-lg text-[15px] font-normal font-sans p-2 pl-12 text-slate-800 focus:ring-[#7E1925]"
                             />
                           </div>
                         </div>
@@ -1111,9 +1112,9 @@ export default function App() {
 
                     <div
                       onClick={() => setIncludeShipping(!includeShipping)}
-                      className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2 cursor-pointer hover:bg-slate-100/60 transition"
+                      className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl space-y-2 cursor-pointer hover:bg-slate-100/60 transition"
                     >
-                      <label className="flex items-center gap-2 cursor-pointer text-xs font-normal font-sans text-slate-600">
+                      <label className="flex items-center gap-2 cursor-pointer text-[15px] font-normal font-sans text-slate-600">
                         <input
                           type="checkbox"
                           checked={includeShipping}
@@ -1122,9 +1123,9 @@ export default function App() {
                         />
                         <span>Shipping allowance</span>
                       </label>
-                      <div className="flex items-center justify-between text-xs text-slate-500 pl-6">
+                      <div className="flex items-center justify-between text-[15px] text-slate-500 pl-5">
                         <span>Estimate amount:</span>
-                        <span className="font-sans font-normal text-xs text-slate-800">{includeShipping ? 'HK$ 450.00' : 'HK$ 0.00'}</span>
+                        <span className="font-sans font-normal text-[15px] text-slate-800">{includeShipping ? 'HK$ 450.00' : 'HK$ 0.00'}</span>
                       </div>
                     </div>
                   </div>
@@ -1133,22 +1134,22 @@ export default function App() {
                 {/* 04 Declarations & Undertakings */}
                 <fieldset className="bg-white rounded-3xl p-5 border border-slate-200/90 shadow-sm space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <legend className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-xs font-black flex items-center justify-center">
+                    <legend className="text-[18px] font-extrabold text-slate-900 flex items-center gap-2">
+                      <span className="w-7 h-7 rounded-full bg-[#7E1925]/10 text-[#7E1925] text-[15px] font-black flex items-center justify-center shrink-0">
                         04
                       </span>
                       Declarations & Undertakings
                     </legend>
-                    <ShieldCheck className="w-4 h-4 text-[#7E1925]" />
+                    <ShieldCheck className="w-4 h-4 text-[#7E1925] shrink-0" />
                   </div>
 
-                  <label className="flex items-start gap-2.5 text-xs text-slate-600 cursor-pointer">
+                  <label className="flex items-start gap-2.5 text-[15px] text-slate-600 cursor-pointer leading-relaxed">
                     <input
                       type="checkbox"
                       checked={declareNoOtherSupport}
                       onChange={(e) => setDeclareNoOtherSupport(e.target.checked)}
                       required
-                      className="mt-0.5 rounded text-[#7E1925] focus:ring-[#7E1925]"
+                      className="mt-1 rounded text-[#7E1925] focus:ring-[#7E1925]"
                     />
                     <span>
                       I declare that this entry is <strong className="text-slate-900 underline">not</strong> supported by any other
@@ -1156,13 +1157,13 @@ export default function App() {
                     </span>
                   </label>
 
-                  <label className="flex items-start gap-2.5 text-xs text-slate-600 cursor-pointer">
+                  <label className="flex items-start gap-2.5 text-[15px] text-slate-600 cursor-pointer leading-relaxed">
                     <input
                       type="checkbox"
                       checked={declareTerms}
                       onChange={(e) => setDeclareTerms(e.target.checked)}
                       required
-                      className="mt-0.5 rounded text-[#7E1925] focus:ring-[#7E1925]"
+                      className="mt-1 rounded text-[#7E1925] focus:ring-[#7E1925]"
                     />
                     <span>
                       I confirm that this application complies with the terms and regulations of the Scheme document. I understand and
@@ -1172,59 +1173,59 @@ export default function App() {
 
                   {/* Digital Signature Card */}
                   <div className="border border-slate-200 rounded-2xl p-3.5 bg-slate-50 space-y-2">
-                    <div className="flex justify-between items-center text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    <div className="flex flex-wrap justify-between items-center gap-2 text-[15px] font-bold text-slate-500">
                       <span>Signature of Applicant *</span>
                       <span className="text-emerald-600 font-bold flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3" />
+                        <CheckCircle2 className="w-4 h-4" />
                         Verified
                       </span>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <span className="font-sans text-xs font-normal text-slate-800">Rachel Tsang</span>
-                      <span className="text-[10px] font-normal text-slate-500">Digitally Authenticated • 18 Feb 2025</span>
+                    <div className="flex flex-wrap items-center justify-between gap-1.5">
+                      <span className="font-sans text-[15px] font-normal text-slate-800">Rachel Tsang</span>
+                      <span className="text-[15px] font-normal text-slate-500">Digitally Authenticated • 18 Feb 2025</span>
                     </div>
                   </div>
 
                   {/* Endorser Info */}
-                  <div className="p-3 bg-amber-50/60 border border-amber-200/80 rounded-2xl flex items-center justify-between text-xs">
+                  <div className="p-3.5 bg-amber-50/60 border border-amber-200/80 rounded-2xl flex items-start justify-between gap-2 text-[15px]">
                     <div className="space-y-0.5">
-                      <span className="block text-[10px] font-bold text-amber-800 uppercase tracking-wider">
+                      <span className="block text-[15px] font-bold text-amber-800">
                         Signature of Endorser
                       </span>
-                      <span className="font-sans text-xs font-normal text-slate-800">Assigned to: {courseTutor || 'Dr. K. Wong'}</span>
-                      <p className="text-[10px] text-slate-500">Pending digital sign-off after submission</p>
+                      <span className="font-sans text-[15px] font-normal text-slate-800 block">Assigned to: {courseTutor || 'Dr. K. Wong'}</span>
+                      <p className="text-[15px] text-slate-500">Pending digital sign-off after submission</p>
                     </div>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800">PENDING</span>
+                    <span className="px-2.5 py-0.5 rounded text-[15px] font-bold bg-amber-100 text-amber-800 shrink-0">PENDING</span>
                   </div>
 
-                  <div className="flex justify-between items-center text-xs text-slate-500 pt-1">
+                  <div className="flex justify-between items-center text-[15px] text-slate-500 pt-1">
                     <span className="text-slate-600">Date of Application</span>
-                    <span className="font-sans font-normal text-xs text-slate-800">18/02/2025</span>
+                    <span className="font-sans font-normal text-[15px] text-slate-800">18/02/2025</span>
                   </div>
                 </fieldset>
 
                 {/* Submit Actions */}
-                <div className="space-y-2 pt-2">
+                <div className="space-y-2.5 pt-2">
                   <div className="flex gap-2">
                     <button
                       type="button"
                       onClick={() => showToast('Draft autosaved to your student profile (14s ago).')}
-                      className="px-5 py-3 rounded-2xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold transition flex items-center justify-center gap-1.5"
+                      className="px-4 py-3 rounded-2xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-[15px] font-bold transition flex items-center justify-center gap-1.5 shrink-0"
                     >
                       <Download className="w-4 h-4 text-slate-500" />
                       DRAFT
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 bg-[#7E1925] hover:bg-[#65131D] text-white font-bold py-3 px-4 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-[#7E1925]/25 transition active:scale-[0.98]"
+                      className="flex-1 bg-[#7E1925] hover:bg-[#65131D] text-white font-bold py-3 px-4 rounded-2xl text-[15px] flex items-center justify-center gap-2 shadow-lg shadow-[#7E1925]/25 transition active:scale-[0.98]"
                     >
                       <span>SUBMIT APPLICATION</span>
-                      <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                      <ArrowRight className="w-4 h-4 stroke-[2.5] shrink-0" />
                     </button>
                   </div>
-                  <div className="flex items-center justify-between px-2 text-[10px] text-slate-400">
-                    <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <div className="flex flex-wrap items-center justify-between gap-2 px-1 text-[15px] text-slate-400">
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                       Draft auto-saved 14s ago
                     </span>
                     <span>Review SLA: 3–5 Working Days</span>
@@ -1250,7 +1251,7 @@ export default function App() {
                     AY 2024/25 Active
                   </span>
                 </div>
-                <h1 className="text-xl font-bold tracking-tight text-slate-900 leading-tight">
+                <h1 className="text-[20px] font-bold tracking-tight text-slate-900 leading-tight">
                   Application & Reimbursement Tracker
                 </h1>
                 <p className="text-xs text-slate-500">
@@ -1260,13 +1261,11 @@ export default function App() {
 
               {/* Remaining Cap Card */}
               <div className="bg-white rounded-3xl p-4 border border-slate-200/90 shadow-sm space-y-2">
-                <div className="flex justify-between items-baseline">
+                <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Remaining Cap Balance</span>
-                  <span className="text-xs font-semibold text-slate-400">${capRemaining.toLocaleString()} / 15,000</span>
                 </div>
-                <div className="flex items-baseline justify-between">
+                <div>
                   <span className="text-2xl font-black text-[#7E1925] tracking-tight">$ {capRemaining.toLocaleString()}</span>
-                  <span className="text-xs text-slate-500 font-mono">Rachel Tsang (2208****D)</span>
                 </div>
                 <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div
@@ -1279,54 +1278,127 @@ export default function App() {
 
               {/* 4 Metric Cards Grid */}
               <div className="grid grid-cols-2 gap-2.5">
-                <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center font-bold">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setTrackerFilter(trackerFilter === 'received' ? null : 'received')}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setTrackerFilter(trackerFilter === 'received' ? null : 'received');
+                    }
+                  }}
+                  className={`bg-white rounded-2xl p-3 shadow-xs flex items-center gap-2 cursor-pointer transition active:scale-[0.98] select-none ${
+                    trackerFilter === 'received'
+                      ? 'border-2 border-[#7E1925] bg-[#7E1925]/5'
+                      : 'border border-slate-200 hover:border-slate-300'
+                  }`}
+                >
+                  <div className="w-8 h-8 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center font-bold shrink-0">
                     <FileText className="w-4 h-4" />
                   </div>
-                  <div>
-                    <span className="block text-base font-extrabold text-slate-900 leading-none">
-                      {applications.filter(a => a.status === 'received').length || 1}
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-1.5">
+                    <span className="text-[16px] font-bold text-slate-900 leading-tight">Received</span>
+                    <span className="text-[12px] font-extrabold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 leading-none shrink-0">
+                      {applications.filter(a => a.status === 'received').length}
                     </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Received</span>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setTrackerFilter(trackerFilter === 'pending' ? null : 'pending')}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setTrackerFilter(trackerFilter === 'pending' ? null : 'pending');
+                    }
+                  }}
+                  className={`bg-white rounded-2xl p-3 shadow-xs flex items-center gap-2 cursor-pointer transition active:scale-[0.98] select-none ${
+                    trackerFilter === 'pending'
+                      ? 'border-2 border-[#7E1925] bg-[#7E1925]/5'
+                      : 'border border-slate-200 hover:border-amber-300'
+                  }`}
+                >
+                  <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold shrink-0">
                     <Clock className="w-4 h-4" />
                   </div>
-                  <div>
-                    <span className="block text-base font-extrabold text-amber-700 leading-none">
-                      {applications.filter(a => a.status === 'pending').length || 1}
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-1.5">
+                    <span className="text-[16px] font-bold text-slate-900 leading-tight">Pending</span>
+                    <span className="text-[12px] font-extrabold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 leading-none shrink-0">
+                      {applications.filter(a => a.status === 'pending').length}
                     </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Pending Review</span>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-rose-50 text-[#7E1925] flex items-center justify-center font-bold">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setTrackerFilter(trackerFilter === 'granted' ? null : 'granted')}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setTrackerFilter(trackerFilter === 'granted' ? null : 'granted');
+                    }
+                  }}
+                  className={`bg-white rounded-2xl p-3 shadow-xs flex items-center gap-2 cursor-pointer transition active:scale-[0.98] select-none ${
+                    trackerFilter === 'granted'
+                      ? 'border-2 border-[#7E1925] bg-[#7E1925]/5'
+                      : 'border border-slate-200 hover:border-[#7E1925]/40'
+                  }`}
+                >
+                  <div className="w-8 h-8 rounded-xl bg-rose-50 text-[#7E1925] flex items-center justify-center font-bold shrink-0">
                     <Award className="w-4 h-4" />
                   </div>
-                  <div>
-                    <span className="block text-base font-extrabold text-[#7E1925] leading-none">HK$ 4.8k</span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Grant Ready</span>
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-1.5">
+                    <span className="text-[16px] font-bold text-slate-900 leading-tight">Granted</span>
+                    <span className="text-[12px] font-extrabold px-2 py-0.5 rounded-full bg-rose-50 text-[#7E1925] leading-none shrink-0">
+                      {applications.filter(a => a.status === 'action_required' || a.status === 'completed').length}
+                    </span>
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-slate-100 text-slate-400 flex items-center justify-center font-bold">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setTrackerFilter(trackerFilter === 'declined' ? null : 'declined')}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setTrackerFilter(trackerFilter === 'declined' ? null : 'declined');
+                    }
+                  }}
+                  className={`bg-white rounded-2xl p-3 shadow-xs flex items-center gap-2 cursor-pointer transition active:scale-[0.98] select-none ${
+                    trackerFilter === 'declined'
+                      ? 'border-2 border-[#7E1925] bg-[#7E1925]/5'
+                      : 'border border-slate-200 hover:border-slate-300'
+                  }`}
+                >
+                  <div className="w-8 h-8 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center font-bold shrink-0">
                     <AlertCircle className="w-4 h-4" />
                   </div>
-                  <div>
-                    <span className="block text-base font-extrabold text-slate-500 leading-none">1</span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Declined</span>
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-1.5">
+                    <span className="text-[16px] font-bold text-slate-900 leading-tight">Declined</span>
+                    <span className="text-[12px] font-extrabold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 leading-none shrink-0">
+                      {applications.filter(a => a.status === 'rejected').length}
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Applications List */}
               <div className="space-y-3 pt-1">
-                {applications.map((app) => (
+                {applications
+                  .filter((app) => {
+                    if (!trackerFilter) return true;
+                    if (trackerFilter === 'received') return app.status === 'received';
+                    if (trackerFilter === 'pending') return app.status === 'pending';
+                    if (trackerFilter === 'granted') return app.status === 'action_required' || app.status === 'completed';
+                    if (trackerFilter === 'declined') return app.status === 'rejected';
+                    return true;
+                  })
+                  .map((app) => (
                   <div
                     key={app.id}
                     className={`bg-white rounded-3xl p-4 shadow-sm space-y-3 ${
@@ -1376,7 +1448,19 @@ export default function App() {
                     </div>
 
                     <div>
-                      <h2 className="text-sm font-bold text-slate-900 leading-tight">{app.title}</h2>
+                      <h2
+                        className={`font-bold text-slate-900 leading-tight ${
+                          app.title === 'Core77 Design Awards 2025' ||
+                          app.title === 'Local Creative Youth Media Exhibition' ||
+                          app.title === 'iF Student Design Award 2025'
+                            ? 'text-[19px]'
+                            : app.title === 'Red Dot Award: Brands & Communication 2025'
+                            ? 'text-[17px]'
+                            : 'text-sm'
+                        }`}
+                      >
+                        {app.title}
+                      </h2>
                       <p className="text-xs text-slate-500 mt-0.5">{app.category}</p>
                     </div>
 
@@ -1449,7 +1533,7 @@ export default function App() {
               {/* Disbursement Timeline Card */}
               <div className="bg-slate-100 rounded-2xl p-3.5 space-y-1 text-xs text-slate-600 border border-slate-200">
                 <div className="flex items-center justify-between font-bold text-slate-800">
-                  <span className="flex items-center gap-1.5">
+                  <span className="flex items-center gap-1.5 text-[15px]">
                     <Clock className="w-4 h-4 text-[#7E1925]" />
                     Disbursement Timeline
                   </span>
@@ -1745,7 +1829,7 @@ export default function App() {
                           Dean Approval Cleared
                         </span>
                         <span className="text-[10px] font-mono text-slate-400 block mt-1">REF #SUB-2024-1190</span>
-                        <h4 className="text-sm font-bold text-slate-900 mt-0.5">iF Student Design Award 2025</h4>
+                        <h4 className="text-[19px] font-bold text-slate-900 mt-0.5">iF Student Design Award 2025</h4>
                         <p className="text-[11px] text-slate-500">Category: Sustainable Architecture &amp; Prefab Design</p>
                       </div>
                       <div className="text-right">
